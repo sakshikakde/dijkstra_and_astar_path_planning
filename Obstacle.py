@@ -2,9 +2,9 @@ import numpy as np
 
 sizex = 400
 sizey = 300
-robot_radius = 10
-clearance = 5
-total_clearance = 0# robot_radius + clearance
+robot_radius = 0
+clearance = 0
+total_clearance = 15# robot_radius + clearance
 # circle
 circle_diameter = 70 
 circle_offset_x = 90
@@ -21,19 +21,22 @@ ellipse_radius_y = int(ellipse_diameter_y/2 + total_clearance)
 
 # C shape
 c_offset_x = 200
-c_offset_y = sizey - 20
-c_length_x = 30 + (total_clearance * 2)
-c_length_y = 50 + (total_clearance * 2)
-c_width = 10 + (total_clearance)
-c_height = 30 - (total_clearance * 2)
+c_offset_y = 230
+c_length_x = 30 
+c_length_y = 50
+c_width = 10
+c_height = 30
 
 # angles rectangle
 rect_angle = 35 * np.pi/180
-rect_length = 150 + total_clearance
-rect_width = 20 + total_clearance
+rect_length = 150 + 2 * total_clearance
+rect_width = 20 + 2 * total_clearance
 
-rect_corner1_x = 48
-rect_corner1_y = 108
+rect_offset_x = 48
+rect_offset_y = 108
+
+rect_corner1_x = int(rect_offset_x ) #- total_clearance * np.sqrt(2))
+rect_corner1_y = int(rect_offset_y - total_clearance * np.sqrt(2))
 
 rect_corner2_x = int(rect_corner1_x + rect_length * np.cos(rect_angle))
 rect_corner2_y = int(rect_corner1_y + rect_length * np.sin(rect_angle))
@@ -50,37 +53,32 @@ rect_y_min = np.min([rect_corner1_y, rect_corner2_y, rect_corner3_y, rect_corner
 rect_x_max = np.max([rect_corner1_x, rect_corner2_x, rect_corner3_x, rect_corner4_x])
 rect_y_max = np.max([rect_corner1_y, rect_corner2_y, rect_corner3_y, rect_corner4_y])
 
-# polygon
-poly_angle = 45 * np.pi/180
-poly_length = 75
-poly_width = 60
+# c_shape
+c_corner1_x = c_offset_x - total_clearance
+c_corner1_y = c_offset_y - total_clearance
 
-poly_corner1_x = sizex - 72
-poly_corner1_y = 63
+c_corner2_x = c_corner1_x + c_length_x + 2 * total_clearance
+c_corner2_y = c_corner1_y
 
-right_tri_height = 55
+c_corner3_x = c_corner2_x
+c_corner3_y = c_corner2_y + c_width + 2 * total_clearance
 
-poly_corner2_x = int(poly_corner1_x + poly_length * np.cos(poly_angle))
-poly_corner2_y = int(poly_corner1_y + poly_length * np.sin(poly_angle))
+c_corner4_x = c_corner3_x - (c_length_x - total_clearance) 
+c_corner4_y = c_corner3_y
 
-poly_corner4_x = int(poly_corner1_x - poly_width * np.sin(poly_angle))
-poly_corner4_y = int(poly_corner1_y + poly_width * np.cos(poly_angle))
+c_corner5_x = c_corner4_x
+c_corner5_y = c_corner4_y + (c_height - 2 * total_clearance)
 
-poly_corner3_x = int(poly_corner4_x + 56 * np.cos(poly_angle))
-poly_corner3_y = int(poly_corner4_y + 56 * np.sin(poly_angle))
+c_corner6_x = c_corner2_x
+c_corner6_y = c_corner5_y
 
-poly_corner5_x = poly_corner2_x
-poly_corner5_y = poly_corner2_y + right_tri_height
+c_corner7_x = c_corner6_x
+c_corner7_y = c_corner5_y + c_width + 2 * total_clearance
 
-poly_corner6_x = 354
-poly_corner6_y = 138
+c_corner8_x = c_corner1_x
+c_corner8_y = c_corner7_y
 
-tan65 = (poly_corner5_y - poly_corner6_y) / (poly_corner5_x - poly_corner6_x)
-tan36 = (poly_corner6_y - poly_corner3_y) / (poly_corner6_x - poly_corner3_x)
-
-poly_x_min = np.min([poly_corner1_x, poly_corner2_x, poly_corner3_x, poly_corner4_x, poly_corner5_x, poly_corner6_x])
-poly_y_min = np.min([poly_corner1_y, poly_corner2_y, poly_corner3_y, poly_corner4_y, poly_corner5_y, poly_corner6_y])
-
-poly_x_max = np.max([poly_corner1_x, poly_corner2_x, poly_corner3_x, poly_corner4_x, poly_corner5_x, poly_corner6_x])
-poly_y_max = np.max([poly_corner1_y, poly_corner2_y, poly_corner3_y, poly_corner4_y, poly_corner5_y, poly_corner6_y])
-
+c_max_x = np.max([c_corner1_x, c_corner2_x, c_corner3_x, c_corner4_x, c_corner5_x, c_corner6_x, c_corner7_x, c_corner8_x])
+c_min_x = np.min([c_corner1_x, c_corner2_x, c_corner3_x, c_corner4_x, c_corner5_x, c_corner6_x, c_corner7_x, c_corner8_x])
+c_max_y = np.max([c_corner1_y, c_corner2_y, c_corner3_y, c_corner4_y, c_corner5_y, c_corner6_y, c_corner7_y, c_corner8_y])
+c_min_y = np.min([c_corner1_y, c_corner2_y, c_corner3_y, c_corner4_y, c_corner5_y, c_corner6_y, c_corner7_y, c_corner8_y])
