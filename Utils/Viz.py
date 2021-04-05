@@ -68,12 +68,28 @@ def addObstacles2Map(space_map):
 
 
 
-    # rectangle
+    # # rectangle
     for i in range(rect_x_min, rect_x_max):
         for j in range(rect_y_min, rect_y_max):
-            if (j >= (np.tan(rect_angle) * (i - rect_corner1_x)  + rect_corner1_y)) and (j <= (np.tan(rect_angle) * (i -rect_corner4_x)  + rect_corner4_y)):
-                if (j >= (-np.tan(np.pi/2 - rect_angle) * (i -rect_corner4_x)  + rect_corner4_y)) and (j <= (-np.tan(np.pi/2 - rect_angle) * (i -rect_corner3_x)  + rect_corner3_y)):
-                    updateMapViz(space_map, [i, j], [255, 0, 0])
+            # if (j >= (np.tan(rect_angle) * (i - rect_corner1_x)  + rect_corner1_y)) and (j <= (np.tan(rect_angle) * (i -rect_corner4_x)  + rect_corner4_y)):
+            #     if (j >= (-np.tan(np.pi/2 - rect_angle) * (i -rect_corner4_x)  + rect_corner4_y)) and (j <= (-np.tan(np.pi/2 - rect_angle) * (i -rect_corner3_x)  + rect_corner3_y)):
+            #         updateMapViz(space_map, [i, j], [255, 0, 0])
+
+            #condition for rectangle
+            d1 = abs((j - 0.7002*i - 74.39) / (1 + (0.7002)**2)**(0.5))
+            d2 = abs((j - 0.7002*i - 98.8) / (1 + (0.7002)**2)**(0.5))
+            d3 = abs((j + 1.428*i - 176.55) / (1 + (1.428)**2)**(0.5))
+            d4 = abs((j + 1.428*i - 439.44) / (1 + (1.428)**2)**(0.5))
+            if (d1+d2 <= rect_width and d3+d4 <= rect_length):
+                updateMapViz(space_map, [i, j], [255, 0, 0])
+
+            # #condition for rectangle
+            # d1 = abs((j - 0.7002*i - 74.39) / (1 + (0.7002)**2)**(0.5))
+            # d2 = abs((j - 0.7002*i - 98.8) / (1 + (0.7002)**2)**(0.5))
+            # d3 = abs((j + 1.428*i - 176.55) / (1 + (1.428)**2)**(0.5))
+            # d4 = abs((j + 1.428*i - 439.44) / (1 + (1.428)**2)**(0.5))
+            # if (d1+d2 <= rect_width - (2 * total_clearance) and d3+d4 <= rect_length - (2 * total_clearance)):
+            #     updateMapViz(space_map, [i, j], [255, 255, 0])
 
 
     c4_x = int(rect_offset_x - (rect_width - 2 * total_clearance) * np.sin(rect_angle))

@@ -1,10 +1,13 @@
 import numpy as np
+from Utils.MiscUtils import *
 
 sizex = 400
 sizey = 300
-robot_radius = 0
-clearance = 0
-total_clearance = 15# robot_radius + clearance
+robot_radius = 5
+clearance = 10
+# total_clearance = robot_radius + clearance
+# sizex, sizey, robot_radius, clearance = getParameters()
+total_clearance = robot_radius + clearance
 # circle
 circle_diameter = 70 
 circle_offset_x = 90
