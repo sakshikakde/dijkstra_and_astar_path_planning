@@ -1,5 +1,4 @@
 import numpy as np
-from Utils.MiscUtils import *
 
 sizex = 400
 sizey = 300

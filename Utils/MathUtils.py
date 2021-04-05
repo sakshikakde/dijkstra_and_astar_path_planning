@@ -71,8 +71,8 @@ def intersectionWithCircle(m, c, cx, cy, r):
     else:
         determinant = (r**2)*(1 + m**2) - (cy - m*cx -c)**2
         if (determinant > 0.0):
-            x1 = cx + cy*m - c*m + np.sqrt(determinant)
-            x2 = cx + cy*m - c*m - np.sqrt(determinant)
+            x1 = (cx + cy*m - c*m + np.sqrt(determinant))/(1+ m**2)
+            x2 = (cx + cy*m - c*m - np.sqrt(determinant))/(1+ m**2)
             y1 = m*x1 + c
             y2 = m*x2 + c
         else :
@@ -150,7 +150,8 @@ def circleIntersect(move):
         return False
 
     circle = (I[:,0] - circle_offset_x)**2 + (I[:,1] - circle_offset_y)**2
-    if (circle <= circle_radius ** 2).any():
+    ratio = (circle/(circle_radius**2)).astype(int)
+    if (ratio <= 1).any():
         return True
     else:
         return False
