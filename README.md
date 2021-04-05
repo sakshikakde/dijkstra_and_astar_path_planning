@@ -28,5 +28,8 @@ Siddharth Telang: 116764520
 ## Videos:
 https://drive.google.com/drive/folders/10njIiXhTS0WaCclqDIwk8sDQV5vrcUC-?usp=sharing
 
+## Note
+If you wish to change the clearance and robot radius, please go to obstacle.py and change the "robot_radius" and "clearance" variable which are set at 5 and 10 as default.
+
 
  
