@@ -1,3 +1,5 @@
+# Path planning for rigid body robots using Dijkstra and AStar algorithms
+
 ## ENPM 661 Planning for Autonomous Robots
 ## Project 3 Phase 1,2
 
@@ -13,6 +15,10 @@ Siddharth Telang: 116764520
  --InitState: Initial state of the robot     
  --Goal State: Goal state of the robot      
  --SaveFolderName: Folder where the video will be saved (default - current directory)
+
+<p align="center">
+<img src="data/dijkstra-path.gif"/>
+</p>
 
 ## A* Path planning:
 ### Steps to run:
