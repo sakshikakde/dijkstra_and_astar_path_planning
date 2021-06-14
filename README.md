@@ -4,11 +4,15 @@
 ## Project 3 Phase 1,2
 
 Sakshi Kakde: 117472448           
-Siddharth Telang: 116764520
+Siddharth Telang: 116764520       
 
 ## Dijkstra Path planning:
 ### Steps to run:
 	python3 Dijkstra_Final.py --InitState 0 0 --GoalState 100 200 --SaveFolderName ./
+
+<p align="center">
+<img src="data/dijkstra-path.gif"/>
+</p>
 
 ### Parameters:      
 
@@ -16,13 +20,13 @@ Siddharth Telang: 116764520
  --Goal State: Goal state of the robot      
  --SaveFolderName: Folder where the video will be saved (default - current directory)
 
-<p align="center">
-<img src="data/dijkstra-path.gif"/>
-</p>
-
 ## A* Path planning:
 ### Steps to run:
 	python3 AStar_Rigid_Body.py --InitState 20 50 90  --GoalState 320 230  --StepSize 10 --SaveFolderName ./
+
+<p align="center">
+<img src="data/AStar-path.gif"/>
+</p>
 
 ### Parameters:       
 
